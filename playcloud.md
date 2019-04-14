@@ -1,4 +1,4 @@
-### 计算机硬件和软件的关系是什么？
+#### 计算机硬件和软件的关系是什么？
 硬件是物理设备，是计算机运行的物质基础。
 
 软件是核心，只有硬件没有软件，计算机就是个空盒子。
@@ -6,7 +6,7 @@
 我的理解是好比一个酒店的厨房：厨房空间大小，抽风系统，排水管道，灶台数量，水电安装都是厨房的**硬件**，各种厨具则是这个厨房的**软件**，厨具是做菜的必备条件，没有这些“软件”，环境配置再高级的厨房也是个空房子，而厨师当然就相当于用户啦。
 ### 关于内核和发行版本
 
-##### 常见的 Linux 发行版本有哪些？它们的主要差别在什么地方？（*）
+#### 常见的 Linux 发行版本有哪些？它们的主要差别在什么地方？（*）
 A: 
 	Linux发行版则是Linux内核基础上添加了不同工具软件构成的一套操作系统。虽然内核都是一样的，但添加部分各不相同，这就构成了不同的发行版本。最常见的发行版本有：
 
@@ -31,13 +31,13 @@ Description:    CentOS Linux release 7.3.1611 (Core)
 Release:        7.3.1611
 Codename:       Core
 ```
-##### Manjaro Deepin Linux 是一个什么样的存在？
+#### Manjaro Deepin Linux 是一个什么样的存在？
  A: Manjaro-deepin是以manjaro为基础的桌面系统。外观精美，但是Manjaro的软件安装方式会跟Debian系列和CentOS的不同。
  [Manjaro-deepn安装指南](https://zhuanlan.zhihu.com/p/43442012)
 
 
 
-##### 什么是 Linux 系统的内核，如何查看内核版本号？
+#### 什么是 Linux 系统的内核，如何查看内核版本号？
 　Linux内核［kernel］是整个操作系统的最底层，它负责整个硬件的驱动，以及提供各种系统所需的核心功能。在内核基础上挂载不同软件便构成操作系统，Ubuntu、RedHat、Fedora、Debian等都是基于Linux内核(版本号可能不同)的不同操作系统。
 方法一，用`cat/proc/version`：
 ```bash
@@ -52,22 +52,22 @@ Linux izuf6btm1dq2w64mt5q889z 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:
 ```
 ### 关于Linux安装和配置
 
-##### 如何组装服务器和安装Linux系统（*）
+#### 如何组装服务器和安装Linux系统（*）
 
-##### 在 Linux 下如何查看电脑的硬件信息（如内存、CPU、硬盘、显卡等）
+#### 在 Linux 下如何查看电脑的硬件信息（如内存、CPU、硬盘、显卡等）
 A:
  - `cat /proc/cpuinfo`  查看CPU 的详细信息
  - `free -m` 查看内存
  - `lsblk` 查看硬盘和分区
  - `lspci | grep -i vga` 查看显卡信息
  
-##### Linux 系统常见的文件系统有哪几种？Windows系统上看到的C盘、D盘，在Linux 系统下是以什么样的形式存在？
+#### Linux 系统常见的文件系统有哪几种？Windows系统上看到的C盘、D盘，在Linux 系统下是以什么样的形式存在？
  
  A：
  1.Linux系统因为使用VFS，所有其核心可以支持如ext、ext2、ext3、ext4、JFS2等的多种的文件系统。
  2.Linux采用目录形式来代替windows中硬盘分区的概念，所以没有C/D盘。Windows有不同的分区，同时目录都存于分区上。linux则通过加载的方式把所有分区都放置在 'root' 下制定的目录里。
-##### Linux 系统如何设置开机自动挂载（mount）你的移动介质（如U盘、移动硬盘）
-A:  **使用修改fstab文件的方法配置自动挂载：**
+#### Linux 系统如何设置开机自动挂载（mount）你的移动介质（如U盘、移动硬盘）
+A:  使用修改fstab文件的方法配置自动挂载：
 `/etc/fstab`是在开机引导的时候自动挂载到linux的文件系统。
 首先可以用`fdisk -l`查看挂载信息：
 ```bash
@@ -102,11 +102,11 @@ UUID=59d9ca7b-4f39-4c0c-9334-c56c182076b5 /                       ext4    defaul
 保存退出即可。
 
 ### 关于目录和文件
-##### 什么是“根目录“、“家目录”？
+#### 什么是“根目录“、“家目录”？
 
 A:Linux的文件系统是一个树状发展目录结构，“根目录”是最顶层的目录用`/`。而“家目录”一般在根目录下的`/home`里，不同的用户登陆之后进入的是各自的“家”。
 
-##### 简述文件的绝对路径和相对路径
+#### 简述文件的绝对路径和相对路径
 
 举个栗子，比方说我现在在`bisoft`这个文件夹下属的 `R`文件夹里，我的目的地是：
 ```
@@ -121,7 +121,7 @@ A:Linux的文件系统是一个树状发展目录结构，“根目录”是最�
  cd ..
  cd spack
  ```
-##### Linux 系统在根目录（/）下一般会有哪些目录，它们分别有什么作用？
+#### Linux 系统在根目录（/）下一般会有哪些目录，它们分别有什么作用？
 A:
 - home：普通用户的工作目录
 
@@ -163,16 +163,16 @@ A:
 
 [参考](https://blog.csdn.net/zwt0112/article/details/53067567)
 
-##### 如何查看隐藏文件
+#### 如何查看隐藏文件
 A: 在linux中以`.`开头的都是隐藏文件。可以通过`ls -a`查看隐藏文件。
 
-##### Linux 系统中的 644、755、777 文件权限分别表示什么意思？他们的数字是怎么计算得来的？修改文件权限的命令是什么？怎么设置用户文件的默认权限？如何批量修改某个目录下的目录权限为755，文件权限为644？
+#### Linux 系统中的 644、755、777 文件权限分别表示什么意思？他们的数字是怎么计算得来的？修改文件权限的命令是什么？怎么设置用户文件的默认权限？如何批量修改某个目录下的目录权限为755，文件权限为644？
 
-##### `rsync`，`scp` 都可以用来在服务器之间传输文件，它们的主要区别是什么？
+#### `rsync`，`scp` 都可以用来在服务器之间传输文件，它们的主要区别是什么？
 
 ### 关于vim
 
-##### 在命令行界面，如何用 Vim 编辑器打开一个文本文件、创建一个文件、对文件进行修改和保存？
+#### 在命令行界面，如何用 Vim 编辑器打开一个文本文件、创建一个文件、对文件进行修改和保存？
 
  A：
    ```bash
@@ -182,34 +182,53 @@ A: 在linux中以`.`开头的都是隐藏文件。可以通过`ls -a`查看隐�
    # 按 	Esc 推出编辑状态
    # 按 ：，输入 wq保存并退出。
 ```
-##### 如何设置 Vim 编辑器，使其支持：a) 文件/目录路径提示和自动补全; b) Python 函数自动补全；c) 左侧显示目录树；d) 各种文件的语法高亮
+#### 如何设置 Vim 编辑器，使其支持：a) 文件/目录路径提示和自动补全; b) Python 函数自动补全；c) 左侧显示目录树；d) 各种文件的语法高亮
 
-##### 跟nano相比，vim的优势在哪里？在vim里，p 与 P 两种指令下粘贴的效果有什么区别？
-
-##### 在vim中，编辑完文件后显示 E45: 'readonly' option is set 时，如何强制写入该档案并保存退出？
-
+#### 跟nano相比，vim的优势在哪里？在vim里，p 与 P 两种指令下粘贴的效果有什么区别？
+vim基本编辑操作更强大，可以用最简单的按键实现光标移动、文本复制粘贴。最重要是对比nano，有更多的开发语言和软件支持vim。
+在vim中`p`是粘贴在光标后，而`P`是粘贴在光标位置。
+#### 在vim中，编辑完文件后显示 E45: 'readonly' option is set 时，如何强制写入该档案并保存退出？
+用`wq!`强制保存并退出。
 ### 关于 `grep`
 
-##### 管道在 Shell 中是一个什么样的角色？
+#### 管道在 Shell 中是一个什么样的角色？如何使用管道将上游的数据传入 Vim 编辑器？
 
-##### 如何使用管道将上游的数据传入 Vim 编辑器？
-
-##### 如何将程序的 stdout 和 stderr 通过管道输出到两个文件？
+#### 如何将程序的 stdout 和 stderr 通过管道输出到两个文件？
 
 ### 关于用户和权限设置
-##### 如何新增一个用户并赋予该用户root权限？
-
-##### 如何使用ROOT权限？如何切换不同的身份
+#### 如何新增一个用户并赋予该用户root权限？
+```bash
+adduser user1 #新增用户
+passwd user1 #设置密码
+```
+#查看/etc/sudoers 文件
+```bash
+cat /etc/sudoers
+```
+找到以下内容
+```bash
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+```
+编辑/etc/sudoers 文件
+```bash
+vim /etc/sudoers
+## Allow root to run any commands anywhere
+root    ALL=(ALL)       ALL
+user1	ALL=(ALL)       ALL
+```
+保存退出即可。
+#### 如何使用ROOT权限？如何切换不同的身份
 A:
  - 在root时，通过`sudo`命令使用root权限。用`su - username`切换到普通用户
  - 在普通用户状态下用`su -`切换成root账号，需要密码。
  - 对于具有root权限的一般用户，用`sudo su`转换成root权限状态，需要密码。用`su username`切换回一般状态
 
 ### 关于shell
-##### Linux 文件操作时，比较 awk/grep/sed 三剑客的用法
-##### Linux 系统中哪个文件是黑洞，可以吃掉 Shell 管道中流动的信息
+#### Linux 文件操作时，比较 awk/grep/sed 三剑客的用法
+#### Linux 系统中哪个文件是黑洞，可以吃掉 Shell 管道中流动的信息
 A: `/dev/null`
-##### 如果输入的shell脚本过长，快速删除有哪些快捷键呢？如何快速调整光标位置
+#### 如果输入的shell脚本过长，快速删除有哪些快捷键呢？如何快速调整光标位置
 A：
 删除字符：
  - `Ctrl+l` 清理屏幕
@@ -223,22 +242,52 @@ A：
 
 ### 关于WSL
 
-##### 在 Win10 自带的子系统下运行 Ubuntu，和独立使用 Ubuntu 系统，前者的优缺点如何？
-##### Windows 子系统（WSL）的安装目录如何从迁移？
-##### WSL 如何自动挂载硬盘使其目录保持755，文件保持644权限？ 
-##### 在 Windows 桌面环境直接编辑 WSL 内的目录和文件（自动挂载的目录和文件除外）有什么后果？
+#### 在 Win10 自带的子系统下运行 Ubuntu，和独立使用 Ubuntu 系统，前者的优缺点如何？
+#### Windows 子系统（WSL）的安装目录如何从迁移？
+#### WSL 如何自动挂载硬盘使其目录保持755，文件保持644权限？ 
+#### 在 Windows 桌面环境直接编辑 WSL 内的目录和文件（自动挂载的目录和文件除外）有什么后果？
 ### 其他
-##### 什么是 X server?
-##### Centos 系统如何开放指定端口的入和出的访问？
-##### Centos 和 Ubuntu 系统如何查看当前服务器的 IP地址和 MAC 地址?###### Centos 和 Ubuntu 系统如何查看即时网速？
-##### 如果你没有买域名，如何在本地模拟某个域名的访问？
-##### 如何查看并设置当前环境的语言？en_us.utf-8和zh_cn.utf-8分别代表什么？
+#### 什么是 X server?
+A: `X server`是Linux系统里面图形接口服务器的简称。当需要Linux提供界面的时候，系统就会建立一个或者数个X server，通过X协议跟窗口管理器交互，由独立于系统的应用程序来产生窗口，状态栏，按钮之类的交互界面。
+#### Centos 系统如何开放指定端口的入和出的访问？
+#### Centos 和 Ubuntu 系统如何查看当前服务器的 IP地址和 MAC 地址?
+#### Centos 和 Ubuntu 系统如何查看即时网速？
+下载`iptraf`
+```bash
+yum install iptraf
+iptraf-ng   
+```
+注意要把你的终端软件放大，否则会报错：
+```bash
+[root@izuf6btm1dq2w64mt5q889z openbiox01]# iptraf-ng
+fatal: This program requires a screen size of at least 80 columns by 24 lines
+Please resize your window
+```
 
+#### 如果你没有买域名，如何在本地模拟某个域名的访问？
+#### 如何查看并设置当前环境的语言？en_us.utf-8和zh_cn.utf-8分别代表什么？
+```bash
+echo $LANG #查看语言
+LANG=语言名称 #设置语言
+```
+en_US.UTF-8下系统的菜单、程序的工具栏语言、输入法默认语言就都是英文的。 
+zh_CN.UTF-8下系统的菜单、程序的工具栏语言、输入法默认语言就都是中文的。
+虽然都是UTF-8，但是在不同国家和地区可能需要设置不一样的语言。
 
 编程题
-使用 bash 实现一个函数，输入整数 n，得到 1 到 n 的累加和
-通过 Shell 命令提取 gtf 中编码基因的 gene symbol 和 gene id
-假设有如下文件“sample.txt"，文件中包含有若干列重复列。请保留一列重复列，并不影响列顺序。
+### 使用 bash 实现一个函数，输入整数 n，得到 1 到 n 的累加和
+```bash
+read -p "Input n: " n
+sum=0
+i=1
+while (($i<=$n));do
+sum=$(($sum +$i))
+i=$(($i+1))
+done
+echo $sum
+```
+#### 通过 Shell 命令提取 gtf 中编码基因的 gene symbol 和 gene id
+#### 假设有如下文件“sample.txt"，文件中包含有若干列重复列。请保留一列重复列，并不影响列顺序。
 ```bash
 COL1,COL2,COL3,COL1,COL4,COL2
 1,2,3,1,4,2
@@ -254,7 +303,7 @@ a1,a2,a3,a4
 b1,b2,b3,b4
 d1,d2,d3,d4
 ```
-使用 bash 编程实现时间戳功能，如下为 ngsjs 的 rtime_stamp 命令行程序（R语言）输出
+#### 使用 bash 编程实现时间戳功能，如下为 ngsjs 的 rtime_stamp 命令行程序（R语言）输出
 ```bash
 $ rtime_stamp
 [[1]]
@@ -280,8 +329,8 @@ $ rtime_stamp -r 'x[[1]]'
 $ rtime_stamp -r 'x[[1]][1]'
 2019_04_03_18_57_18_
 ```
-##### 尝试使用源码编译安装最新版本的 R，记录过程中遇到的问题。同时使用系统自带的包管理器（如 centos 的yum；Debian/Ubuntu 的 apt；arch、manjaro 的 pacman）、conda 和 spack 安装相同版本的 R。
-###### 源码编译安装R 
+#### 尝试使用源码编译安装最新版本的 R，记录过程中遇到的问题。同时使用系统自带的包管理器（如 centos 的yum；Debian/Ubuntu 的 apt；arch、manjaro 的 pacman）、conda 和 spack 安装相同版本的 R。
+##### 源码编译安装R 
 
 这次安装遇到很多问题，查询了很多别人的安装教程，但主要为我解决关键性问题的有一下两个。
 
@@ -386,7 +435,7 @@ yum install R
 ```
 安装过程不长，完成后不需要编译直接输入`R`，检查安装成功！
 
-###### 用conda安装
+##### 用conda安装
 
 **首先要安装`conda`**
 
@@ -435,9 +484,7 @@ The following packages will be downloaded:
 ```
 最后也是直接在终端输入`R`确认安装成功。
 
-
-##### 使用 spack 在指定不同版本的 gcc 编译器（如8.3、5.4 和 4.8）情况下安装最新版本的R。并比较一些 R 基础函数的速度在计算较大数据量时是否有变化。
-
+##### 用spack安装
 安装 spack `git clone https://github.com/spack/spack.git` 
 ```bash
 (base) [openbiox01@izuf6btm1dq2w64mt5q889z biosoft]$ git clone https://github.com/spack/spack.git
@@ -473,3 +520,109 @@ libcurl-devel-7.29.0-51.el7.x86_64.rpm  spack
 ```
 在[basic usage](https://spack.readthedocs.io/en/latest/basic_usage.html)里找可安装的包
 
+但是后面安装出现了一些报错，需要继续查阅
+```bash
+(base) [openbiox01@izuf6btm1dq2w64mt5q889z bin]$ ./spack install r
+==> diffutils is already installed in /home/openbiox01/biosoft/spack/opt/spack/                                                                linux-centos7-x86_64/gcc-4.8.5/diffutils-3.7-ko7qdeieiylfx6v6v3u7jqptrv7lyvoj
+==> bzip2 is already installed in /home/openbiox01/biosoft/spack/opt/spack/linu                                                                x-centos7-x86_64/gcc-4.8.5/bzip2-1.0.6-4vcfqu3netbuizhbtflvsrliinx7jogd
+==> pkgconf is already installed in /home/openbiox01/biosoft/spack/opt/spack/li                                                                nux-centos7-x86_64/gcc-4.8.5/pkgconf-1.6.0-lb63mhdhdxn77fragqn7f7t2hkunpomb
+==> util-macros is already installed in /home/openbiox01/biosoft/spack/opt/spac                                                                k/linux-centos7-x86_64/gcc-4.8.5/util-macros-1.19.1-p66qdrtaslf2cq4wyc6mitrxzhn                                                                yujhc
+==> font-util is already installed in /home/openbiox01/biosoft/spack/opt/spack/                                                                linux-centos7-x86_64/gcc-4.8.5/font-util-1.3.1-ofxgyzj54cnhf2zkje7px3pzxkyrbgv4
+==> zlib is already installed in /home/openbiox01/biosoft/spack/opt/spack/linux                                                                -centos7-x86_64/gcc-4.8.5/zlib-1.2.11-64vg6e4evdrlqgx7iicwhu2hs7lv6gpz
+==> libpng is already installed in /home/openbiox01/biosoft/spack/opt/spack/lin                                                                ux-centos7-x86_64/gcc-4.8.5/libpng-1.6.34-737hc7hnrfzzecjak3ziopsm37bp5li4
+==> freetype is already installed in /home/openbiox01/biosoft/spack/opt/spack/l                                                                inux-centos7-x86_64/gcc-4.8.5/freetype-2.9.1-l7bfkmcfqswpttg6zxi7yaht4fut6uwb
+==> gperf is already installed in /home/openbiox01/biosoft/spack/opt/spack/linu                                                                x-centos7-x86_64/gcc-4.8.5/gperf-3.0.4-r2j762cppsosmmk6hfknjinxia6riidy
+==> libiconv is already installed in /home/openbiox01/biosoft/spack/opt/spack/l                                                                inux-centos7-x86_64/gcc-4.8.5/libiconv-1.15-bli6oh4rawy6bwdqa7ylbp7wt5tkynyv
+==> xz is already installed in /home/openbiox01/biosoft/spack/opt/spack/linux-c                                                                entos7-x86_64/gcc-4.8.5/xz-5.2.4-agv5zlv7phi4ye3evlpv3t4ypgve4bpe
+==> libxml2 is already installed in /home/openbiox01/biosoft/spack/opt/spack/li                                                                nux-centos7-x86_64/gcc-4.8.5/libxml2-2.9.8-i5ugxoeinzxmkexakp3ydfnwrh4tmj4m
+==> fontconfig is already installed in /home/openbiox01/biosoft/spack/opt/spack                                                                /linux-centos7-x86_64/gcc-4.8.5/fontconfig-2.12.3-mzt6y6smu6dboaftdbldaueyrrkzx                                                                i3v
+==> ncurses is already installed in /home/openbiox01/biosoft/spack/opt/spack/li                                                                nux-centos7-x86_64/gcc-4.8.5/ncurses-6.1-rqw3cmcwvd76h4rjgtaxpvrqg47prwkg
+==> tar is already installed in /home/openbiox01/biosoft/spack/opt/spack/linux-                                                                centos7-x86_64/gcc-4.8.5/tar-1.31-i3i4p3q35guhtu3qq5n2pr6f227xr7ha
+==> Installing gettext
+==> Searching for binary cache of gettext
+==> Warning: No Spack mirrors are currently configured
+==> No binary for gettext found: installing from source
+==> Using cached archive: /home/openbiox01/biosoft/spack/var/spack/cache/gettex                                                                t/gettext-0.19.8.1.tar.xz
+==> Staging archive: /home/openbiox01/biosoft/spack/var/spack/stage/gettext-0.1                                                                9.8.1-oxwbujdji2qhspfkt5x6ovemiusmcn5y/gettext-0.19.8.1.tar.xz
+==> Created stage in /home/openbiox01/biosoft/spack/var/spack/stage/gettext-0.1                                                                9.8.1-oxwbujdji2qhspfkt5x6ovemiusmcn5y
+==> Applied patch /home/openbiox01/biosoft/spack/var/spack/repos/builtin/packag                                                                es/gettext/test-verify-parallel-make-check.patch
+==> Building gettext [AutotoolsPackage]
+==> Executing phase: 'autoreconf'
+==> Executing phase: 'configure'
+==> Executing phase: 'build'
+==> Executing phase: 'install'
+==> Successfully installed gettext
+  Fetch: 0.02s.  Build: 5m 14.83s.  Total: 5m 14.85s.
+[+] /home/openbiox01/biosoft/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/get                                                                text-0.19.8.1-oxwbujdji2qhspfkt5x6ovemiusmcn5y
+==> Installing libffi
+==> Searching for binary cache of libffi
+==> Warning: No Spack mirrors are currently configured
+==> No binary for libffi found: installing from source
+==> Fetching https://www.mirrorservice.org/sites/sourceware.org/pub/libffi/libf                                                                fi-3.2.1.tar.gz
+######################################################################## 100.0%
+==> Staging archive: /home/openbiox01/biosoft/spack/var/spack/stage/libffi-3.2.                                                                1-ksqyb2nne56f3f5z5cfsjwqyjfpnbejl/libffi-3.2.1.tar.gz
+==> Created stage in /home/openbiox01/biosoft/spack/var/spack/stage/libffi-3.2.                                                                1-ksqyb2nne56f3f5z5cfsjwqyjfpnbejl
+==> No patches needed for libffi
+==> Building libffi [AutotoolsPackage]
+==> Executing phase: 'autoreconf'
+==> Executing phase: 'configure'
+==> Executing phase: 'build'
+==> Executing phase: 'install'
+==> Successfully installed libffi
+  Fetch: 4.33s.  Build: 7.51s.  Total: 11.84s.
+[+] /home/openbiox01/biosoft/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/lib                                                                ffi-3.2.1-ksqyb2nne56f3f5z5cfsjwqyjfpnbejl
+==> Installing pcre
+==> Searching for binary cache of pcre
+==> Warning: No Spack mirrors are currently configured
+==> No binary for pcre found: installing from source
+==> Fetching https://ftp.pcre.org/pub/pcre/pcre-8.42.tar.bz2
+######################################################################## 100.0%
+==> Staging archive: /home/openbiox01/biosoft/spack/var/spack/stage/pcre-8.42-i                                                                hkxh24qzq6o6out3oqt665mipzhbeox/pcre-8.42.tar.bz2
+==> Created stage in /home/openbiox01/biosoft/spack/var/spack/stage/pcre-8.42-i                                                                hkxh24qzq6o6out3oqt665mipzhbeox
+==> No patches needed for pcre
+==> Building pcre [AutotoolsPackage]
+==> Executing phase: 'autoreconf'
+==> Executing phase: 'configure'
+==> Executing phase: 'build'
+==> Executing phase: 'install'
+==> Successfully installed pcre
+  Fetch: 3.01s.  Build: 1m 11.18s.  Total: 1m 14.19s.
+[+] /home/openbiox01/biosoft/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/pcr                                                                e-8.42-ihkxh24qzq6o6out3oqt665mipzhbeox
+==> Installing readline
+==> Searching for binary cache of readline
+==> Warning: No Spack mirrors are currently configured
+==> No binary for readline found: installing from source
+==> Fetching https://ftpmirror.gnu.org/readline/readline-7.0.tar.gz
+######################################################################## 100.0%
+==> Staging archive: /home/openbiox01/biosoft/spack/var/spack/stage/readline-7.                                                                0-b4z2xcjalfc4z7tgktx7txhe2my3wlfd/readline-7.0.tar.gz
+==> Created stage in /home/openbiox01/biosoft/spack/var/spack/stage/readline-7.                                                                0-b4z2xcjalfc4z7tgktx7txhe2my3wlfd
+==> No patches needed for readline
+==> Building readline [AutotoolsPackage]
+==> Executing phase: 'autoreconf'
+==> Executing phase: 'configure'
+==> Executing phase: 'build'
+==> Executing phase: 'install'
+==> Successfully installed readline
+  Fetch: 7.04s.  Build: 15.86s.  Total: 22.91s.
+[+] /home/openbiox01/biosoft/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/rea                                                                dline-7.0-b4z2xcjalfc4z7tgktx7txhe2my3wlfd
+==> Installing gdbm
+==> Searching for binary cache of gdbm
+==> Warning: No Spack mirrors are currently configured
+==> No binary for gdbm found: installing from source
+==> Fetching https://ftpmirror.gnu.org/gdbm/gdbm-1.18.1.tar.gz
+-=O=-                                                           #   #   # #
+curl: (7) Failed to connect to mirrors.nju.edu.cn port 443: Connection timed ou                                                                t
+==> Fetching from https://ftpmirror.gnu.org/gdbm/gdbm-1.18.1.tar.gz failed.
+==> Error: FetchError: All fetchers failed for gdbm-1.18.1-dv2qksj2dheh7hzmu7if                                                                tqhxlkqrinwt
+
+/home/openbiox01/biosoft/spack/lib/spack/spack/package.py:965, in do_fetch:
+        962                raise FetchError("Will not fetch %s" %
+        963                                 self.spec.format('$_$@'), ck_msg)
+        964
+  >>    965        self.stage.create()
+        966        self.stage.fetch(mirror_only)
+        967        self._fetch_time = time.time() - start_time
+        968
+
+```
+##### 使用 spack 在指定不同版本的 gcc 编译器（如8.3、5.4 和 4.8）情况下安装最新版本的R。并比较一些 R 基础函数的速度在计算较大数据量时是否有变化。

@@ -158,18 +158,23 @@ A：
 使用 bash 实现一个函数，输入整数 n，得到 1 到 n 的累加和
 通过 Shell 命令提取 gtf 中编码基因的 gene symbol 和 gene id
 假设有如下文件“sample.txt"，文件中包含有若干列重复列。请保留一列重复列，并不影响列顺序。
+```bash
 COL1,COL2,COL3,COL1,COL4,COL2
 1,2,3,1,4,2
 a1,a2,a3,a1,a4,a2
 b1,b2,b3,b1,b4,b2
 d1,d2,d3,d1,d4,d2
+```
 变为
+```bash
 COL1,COL2,COL3,COL4
 1,2,3,4
 a1,a2,a3,a4
 b1,b2,b3,b4
 d1,d2,d3,d4
+```
 使用 bash 编程实现时间戳功能，如下为 ngsjs 的 rtime_stamp 命令行程序（R语言）输出
+```bash
 $ rtime_stamp
 [[1]]
 [1] "2019_04_03_18_53_44_" "2019_04_03_18_53_"    "2019_04_03_18_"
@@ -193,6 +198,6 @@ $ rtime_stamp -r 'x[[1]]'
 
 $ rtime_stamp -r 'x[[1]][1]'
 2019_04_03_18_57_18_
-
+```
 尝试使用源码编译安装最新版本的 R，记录过程中遇到的问题。同时使用系统自带的包管理器（如 centos 的yum；Debian/Ubuntu 的 apt；arch、manjaro 的 pacman）、conda 和 spack 安装相同版本的 R。
 使用 spack 在指定不同版本的 gcc 编译器（如8.3、5.4 和 4.8）情况下安装最新版本的R。并比较一些 R 基础函数的速度在计算较大数据量时是否有变化。

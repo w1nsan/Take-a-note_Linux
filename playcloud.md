@@ -1,5 +1,9 @@
-##### 计算机硬件和软件的关系是什么？
+### 计算机硬件和软件的关系是什么？
+硬件是物理设备，是计算机运行的物质基础。
 
+软件是核心，只有硬件没有软件，计算机就是个空盒子。
+
+我的理解是好比一个酒店的厨房：厨房空间大小，抽风系统，排水管道，灶台数量，水电安装都是厨房的**硬件**，各种厨具则是这个厨房的**软件**，厨具是做菜的必备条件，没有这些“软件”，环境配置再高级的厨房也是个空房子，而厨师当然就相当于用户啦。
 ### 关于内核和发行版本
 
 ##### 常见的 Linux 发行版本有哪些？它们的主要差别在什么地方？（*）
@@ -7,12 +11,16 @@ A:
 	Linux发行版则是Linux内核基础上添加了不同工具软件构成的一套操作系统。虽然内核都是一样的，但添加部分各不相同，这就构成了不同的发行版本。最常见的发行版本有：
 
 **Debian/Ubuntu**： Debian系列，包括Debian和Ubuntu等.Debian最具特色的是`apt-get`/`dpkg`包管理方式。Ubuntu是基于Debian的unstable版本加强而来，由其搭载的Linux桌面系统界面非常友好。常见的是基于Gnome的Ubuntu，基于KDE的Kubuntu以及基于Xfc的Xubuntu。就易用性和兼容性而言,Ubuntu比较适合新手。
+
 **RedHat**：redhat可以说是在国内使用最多的Linux版本。这个版本的特点就是使用人数多，资源多。
+
 **CentOS**: CentOS的稳定性非常好，适合于服务器使用。
+
 **Fedora**： Fedora Core的稳定性较差，最好只用于桌面应用
+
 **Manjaro**：比较特别的一种发行版本，基于 Arch Linux 。 Manjaro 几乎为所有的程序都提供了桌面环境和窗口管理界面。
 
-==Linux发行版本有许多，对于我们这种新手的确是两眼一抹黑地挑，这里一个知乎的回答或许可以有点启发==：[如何选择适合自己的Linux发行版本](https://www.zhihu.com/question/21411365)
+Linux发行版本有许多，对于我们这种新手的确是两眼一抹黑地挑，这里一个知乎的回答或许可以有点启发 ：[如何选择适合自己的Linux发行版本](https://www.zhihu.com/question/21411365)
 
 **可以用 `lsb_release -a`查看发行版本型号**
 ```bash
@@ -47,8 +55,17 @@ Linux izuf6btm1dq2w64mt5q889z 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:
 ##### 如何组装服务器和安装Linux系统（*）
 
 ##### 在 Linux 下如何查看电脑的硬件信息（如内存、CPU、硬盘、显卡等）
-
+A:
+ - `cat /proc/cpuinfo`  查看CPU 的详细信息
+ - `free -m` 查看内存
+ - `lsblk` 查看硬盘和分区
+ - `lspci | grep -i vga` 查看显卡信息
+ 
 ##### Linux 系统常见的文件系统有哪几种？Windows系统上看到的C盘、D盘，在Linux 系统下是以什么样的形式存在？
+ 
+ A：
+ 1.Linux系统因为使用VFS，所有其核心可以支持如ext、ext2、ext3、ext4、JFS2等的多种的文件系统。
+ 2.Linux采用目录形式来代替windows中硬盘分区的概念，所以没有C/D盘。Windows有不同的分区，同时目录都存于分区上。linux则通过加载的方式把所有分区都放置在 'root' 下制定的目录里。
 ##### Linux 系统如何设置开机自动挂载（mount）你的移动介质（如U盘、移动硬盘）
 A:  **使用修改fstab文件的方法配置自动挂载：**
 `/etc/fstab`是在开机引导的时候自动挂载到linux的文件系统。
@@ -84,14 +101,67 @@ UUID=59d9ca7b-4f39-4c0c-9334-c56c182076b5 /                       ext4    defaul
 ```
 保存退出即可。
 
-##### 在Linux 需要使用哪些命令来挂载一个移动硬盘？如果挂载时报错，一般会有哪几种情况？分别怎么解决？
-
 ### 关于目录和文件
 ##### 什么是“根目录“、“家目录”？
 
+A:Linux的文件系统是一个树状发展目录结构，“根目录”是最顶层的目录用`/`。而“家目录”一般在根目录下的`/home`里，不同的用户登陆之后进入的是各自的“家”。
+
 ##### 简述文件的绝对路径和相对路径
 
+举个栗子，比方说我现在在`bisoft`这个文件夹下属的 `R`文件夹里，我的目的地是：
+```
+ /home/openbiox01/biosoft/spack/opt/spack/
+```
+绝对路径，无论我身处哪个位置，只要输入绝对路径就可以去到目的地。
+```bash
+ cd /home/openbiox01/biosoft/spack
+ ```
+相对路径，对于我目前所处的位置而言，我只需要往上走一层目录到达`bisoft`就可以再进入`spack`了。
+ ```bash
+ cd ..
+ cd spack
+ ```
 ##### Linux 系统在根目录（/）下一般会有哪些目录，它们分别有什么作用？
+A:
+- home：普通用户的工作目录
+
+- misc：储存一些特殊字符的定义
+
+- root：root用户的工作目录
+
+- bin：存放常用命令
+
+- mnt：默认的挂载软驱和光驱的目录
+
+- sbin：要具有一定权限才能使用的命令
+
+- tmp：公用的临时文件存储点
+
+- boot：存放引导相关的文件
+
+- lib：系统最基本的动态链接共享库
+
+- net：存放和网络相关的文件
+
+- usr：存放应用程序和文件
+
+- dev：设备文件
+
+- opt：给源码安装软件时选择的安装目录位置
+
+- srv：系统启动服务时可以访问的数据库目录
+
+- var：存放一些经常变化的数据
+
+- etc：存放与配置相关的文件
+
+- media：存放可移除设备，如：软盘、光盘
+
+- proc：虚拟目录，是内存的映射
+
+- sys：管理设备文件
+
+[参考](https://blog.csdn.net/zwt0112/article/details/53067567)
 
 ##### 如何查看隐藏文件
 A: 在linux中以`.`开头的都是隐藏文件。可以通过`ls -a`查看隐藏文件。
@@ -366,5 +436,40 @@ The following packages will be downloaded:
 最后也是直接在终端输入`R`确认安装成功。
 
 
-使用 spack 在指定不同版本的 gcc 编译器（如8.3、5.4 和 4.8）情况下安装最新版本的R。并比较一些 R 基础函数的速度在计算较大数据量时是否有变化。
+##### 使用 spack 在指定不同版本的 gcc 编译器（如8.3、5.4 和 4.8）情况下安装最新版本的R。并比较一些 R 基础函数的速度在计算较大数据量时是否有变化。
+
+安装 spack `git clone https://github.com/spack/spack.git` 
+```bash
+(base) [openbiox01@izuf6btm1dq2w64mt5q889z biosoft]$ git clone https://github.com/spack/spack.git
+Cloning into 'spack'...
+remote: Enumerating objects: 153179, done.
+remote: Total 153179 (delta 0), reused 0 (delta 0), pack-reused 153179
+Receiving objects: 100% (153179/153179), 53.26 MiB | 202.00 KiB/s, done.
+Resolving deltas: 100% (72024/72024), done.
+(base) [openbiox01@izuf6btm1dq2w64mt5q889z biosoft]$ ls	#查看文件
+curl-7.61.0                             Miniconda2-latest-Linux-x86_64.sh
+curl-7.61.0.tar.gz                      R-3.5.3
+libcurl-7.29.0-51.el7.x86_64.rpm        R-3.5.3.tar.gz
+libcurl-devel-7.29.0-51.el7.x86_64.rpm  spack
+(base) [openbiox01@izuf6btm1dq2w64mt5q889z biosoft]$ cd spack/bin/
+(base) [openbiox01@izuf6btm1dq2w64mt5q889z bin]$ ./spack install libelf
+==> Installing libelf
+==> Searching for binary cache of libelf
+==> Warning: No Spack mirrors are currently configured
+==> No binary for libelf found: installing from source
+==> Fetching https://fossies.org/linux/misc/old/libelf-0.8.13.tar.gz
+######################################################################## 100.0%
+==> Staging archive: /home/openbiox01/biosoft/spack/var/spack/stage/libelf-0.8.13-qzhgthw73zajntobm3f7ndhl5c3eiene/libelf-0.8.13.tar.gz
+==> Created stage in /home/openbiox01/biosoft/spack/var/spack/stage/libelf-0.8.13-qzhgthw73zajntobm3f7ndhl5c3eiene
+==> No patches needed for libelf
+==> Building libelf [AutotoolsPackage]
+==> Executing phase: 'autoreconf'
+==> Executing phase: 'configure'
+==> Executing phase: 'build'
+==> Executing phase: 'install'
+==> Successfully installed libelf
+  Fetch: 4.98s.  Build: 11.30s.  Total: 16.28s.
+[+] /home/openbiox01/biosoft/spack/opt/spack/linux-centos7-x86_64/gcc-4.8.5/libelf-0.8.13-qzhgthw73zajntobm3f7ndhl5c3eiene
+```
+在[basic usage](https://spack.readthedocs.io/en/latest/basic_usage.html)里找可安装的包
 

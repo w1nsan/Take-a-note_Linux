@@ -1,5 +1,7 @@
 ##### 计算机硬件和软件的关系是什么？
+
 ### 关于内核和发行版本
+
 ##### 常见的 Linux 发行版本有哪些？它们的主要差别在什么地方？（*）
 A: 
 	Linux发行版则是Linux内核基础上添加了不同工具软件构成的一套操作系统。虽然内核都是一样的，但添加部分各不相同，这就构成了不同的发行版本。最常见的发行版本有：
@@ -41,6 +43,7 @@ Linux version 3.10.0-514.26.2.el7.x86_64 (builder@kbuilder.dev.centos.org) (gcc 
 Linux izuf6btm1dq2w64mt5q889z 3.10.0-514.26.2.el7.x86_64 #1 SMP Tue Jul 4 15:04:05 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
 ```
 ### 关于Linux安装和配置
+
 ##### 如何组装服务器和安装Linux系统（*）
 
 ##### 在 Linux 下如何查看电脑的硬件信息（如内存、CPU、硬盘、显卡等）
@@ -101,6 +104,14 @@ A: 在linux中以`.`开头的都是隐藏文件。可以通过`ls -a`查看隐�
 
 ##### 在命令行界面，如何用 Vim 编辑器打开一个文本文件、创建一个文件、对文件进行修改和保存？
 
+ A：
+   ```bash
+   touch filename	#创建文件
+   vim filename 	#用vim打开文件
+   # 按 i 是编辑器进入 insert 状态后编辑文件；
+   # 按 	Esc 推出编辑状态
+   # 按 ：，输入 wq保存并退出。
+```
 ##### 如何设置 Vim 编辑器，使其支持：a) 文件/目录路径提示和自动补全; b) Python 函数自动补全；c) 左侧显示目录树；d) 各种文件的语法高亮
 
 ##### 跟nano相比，vim的优势在哪里？在vim里，p 与 P 两种指令下粘贴的效果有什么区别？
@@ -199,5 +210,161 @@ $ rtime_stamp -r 'x[[1]]'
 $ rtime_stamp -r 'x[[1]][1]'
 2019_04_03_18_57_18_
 ```
-尝试使用源码编译安装最新版本的 R，记录过程中遇到的问题。同时使用系统自带的包管理器（如 centos 的yum；Debian/Ubuntu 的 apt；arch、manjaro 的 pacman）、conda 和 spack 安装相同版本的 R。
+##### 尝试使用源码编译安装最新版本的 R，记录过程中遇到的问题。同时使用系统自带的包管理器（如 centos 的yum；Debian/Ubuntu 的 apt；arch、manjaro 的 pacman）、conda 和 spack 安装相同版本的 R。
+###### 源码编译安装R 
+
+这次安装遇到很多问题，查询了很多别人的安装教程，但主要为我解决关键性问题的有一下两个。
+
+[史上最麻烦的linux下R源码安装](https://www.jianshu.com/p/edb234eed915)
+[Installing R on Linux](https://stackoverflow.com/questions/38690232/installing-r-on-linux-configure-error-libcurl-7-28-0-library-and-headers-a)
+
+首先下载R
+```bash
+wget https://mirrors.tuna.tsinghua.edu.cn/CRAN/src/base/R-3/R-3.5.3.tar.gz
+```
+解压文件
+```bash
+tar -zxvf R-3.5.3.tar.gz 
+```
+配置
+```bash
+cd R-3.5.3  #进入解压的文件
+./configure
+```
+**第一次报错**
+```bash
+configure: error: --with-readline=yes (default) and headers/libs are not available
+```
+查了一下，发现需要安装`readline`。于是：
+```bash
+yum install readline-devel
+./configure --with-readline=no 
+```
+**第二次报错**
+```bash
+configure: error: --with-x=yes (default) and X11 headers/libs are not available
+```
+继续查，发现需要安装 `libX11-devel`和`libXt-devel`
+```bash
+yum install libX11-devel 
+yum install libXt-devel 
+```
+也有说可以设置`./configure --with-readline=no --with-x=no`
+
+继续配置，**第三次报错**
+```bash
+configure: error: libcurl >= 7.22.0 library and headers are required with support for https
+```
+好吧，这次是没有安装`libcurl`
+下载安装编译：
+```bash
+wget https://curl.haxx.se/download/curl-7.61.0.tar.gz
+tar -zxvf curl-7.61.0.tar.gz
+cd curl-7.61.0/
+./configure
+make
+make install
+```
+继续`./configure --with-readline=no --with-x=no`
+**第四次报错**
+```bash
+configure: error: libcurl >= 7.22.0 library and headers are required with support for https
+```
+一样的错误。再查询发现还需要安`libcurl-devel`
+ok,那就继续安装：
+```bash
+yum install libcurl-devel
+```
+GO ON
+```bash
+./configure --with-readline=no --with-x=no	#继续编译,无报错但是有一个warning.
+make
+make install
+```
+Finally!
+```bash
+
+[root@izuf6btm1dq2w64mt5q889z openbiox01]# R
+
+R version 3.5.2 (2018-12-20) -- "Eggshell Igloo"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-redhat-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+```
+
+###### 用 yum 安装
+在CentOS中，用`yum`下载软件可以解决很多问题，最大的好处就是会自动分析你要安装的软件的依赖关系，并会自动帮你安装必须的“依赖软件”。如如说在上面“源码编译方法”中遇到的报错，用`yum`时统统没有出现，并且还不需要配置环境，不需要编译，简直是新手友好。
+
+首先在EPEL中下载R
+```bash
+yum install epel-release	#R已经被EPEL仓库管理着，EPEL是一个汇集了各种附加软件包的项目
+yum install R
+```
+安装过程不长，完成后不需要编译直接输入`R`，检查安装成功！
+
+###### 用conda安装
+
+**首先要安装`conda`**
+
+通过`wget`命令下载miniconda：
+```bash
+wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh
+```
+下载完后进行安装：
+```bash
+bash Miniconda-latest-Linux-x86_64.sh	#`bash` 命令安装软件？
+```
+输入yes确定后还要`source`一下
+```bash
+source ~/.bashrc
+```
+到此为止，`conda`已经顺利安装上了。可以直接输入 
+```bash
+conda
+```
+安装R，一步到位，无需手动编译：
+```bash
+conda install R
+```
+会自动开始安装所需要的文件
+```bash
+(base) [openbiox01@izuf6btm1dq2w64mt5q889z biosoft]$ conda install R
+WARNING: The conda.compat module is deprecated and will be removed in a future release.
+Collecting package metadata: done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/openbiox01/miniconda2
+
+  added / updated specs:
+    - r
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+...
+...
+...
+
+```
+最后也是直接在终端输入`R`确认安装成功。
+
+
 使用 spack 在指定不同版本的 gcc 编译器（如8.3、5.4 和 4.8）情况下安装最新版本的R。并比较一些 R 基础函数的速度在计算较大数据量时是否有变化。
+

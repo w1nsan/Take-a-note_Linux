@@ -1,4 +1,4 @@
-# Restrart for Linux learning
+# Restart for Linux learning
 
 2020开年就是疫情；
 
